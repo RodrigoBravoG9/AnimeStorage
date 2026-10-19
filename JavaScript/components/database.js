@@ -11,6 +11,7 @@
         try {
             const state = JSON.parse(raw);
             if (state.version !== 1 || !Number.isInteger(state.revision) || !Array.isArray(state.products) || !Array.isArray(state.cart) || !Array.isArray(state.orders)) throw new Error();
+            state.products = state.products.map(product => ({ ...product, type: product.type || 'serie' }));
             return state;
         } catch { throw new Error('No se pudo leer la base local. No se han sobrescrito tus datos.'); }
     }
@@ -30,9 +31,11 @@
         const genre = String(product.genre || '').trim();
         const description = String(product.description || '').trim();
         const price = Number(product.price);
+        const type = product.type || 'serie';
+        if (!['serie', 'pelicula'].includes(type)) throw new Error('Selecciona Serie o Película como tipo de anime.');
         if (!title || title.length > 120 || !genre || genre.length > 120 || !description || description.length > 2000 || !Number.isSafeInteger(price) || price < 1 || price > 10000000 || !validImage(product.image)) throw new Error('Revisa el título, género, descripción, imagen y precio entero entre $1 y $10.000.000.');
         return mutate(state => {
-            const entry = { id: product.id || id(), title, genre, description, image: product.image, price };
+            const entry = { id: product.id || id(), title, genre, type, description, image: product.image, price };
             const index = state.products.findIndex(p => p.id === entry.id);
             if (product.id && index < 0) throw new Error('Este anime fue eliminado. Actualiza la página.');
             if (index < 0) state.products.push(entry); else state.products[index] = entry;

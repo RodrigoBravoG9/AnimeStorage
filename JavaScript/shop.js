@@ -28,11 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     let revision = 0;
     let deleteId;
+    let homeSignature;
+    let stopCarousel;
     function renderHome(state) {
         const track = document.querySelector('.learning-carousel-track');
         if (!track) return;
-        window.gsap?.killTweensOf(track);
-        track.style.transform = 'none';
+        const signature = JSON.stringify(state.products);
+        if (signature === homeSignature) return;
+        stopCarousel?.();
         track.replaceChildren();
         state.products.forEach(product => {
             const link = el('a', undefined, 'learning-carousel-card store-featured');
@@ -42,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             track.append(link);
         });
         if (!state.products.length) track.append(el('p', 'El catálogo se está actualizando. Pronto encontrarás nuevas historias.', 'empty-state'));
+        stopCarousel = window.animateLearningCarousel?.(track);
+        homeSignature = signature;
     }
     function renderCatalog(state) {
         const grid = $('catalog-grid');
@@ -51,12 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
         genre.replaceChildren(new Option('Todos los géneros', ''));
         [...new Set(state.products.flatMap(p => p.genre.split('·').map(g => g.trim())))].sort().forEach(g => genre.add(new Option(g, g)));
         genre.value = [...genre.options].some(o => o.value === current) ? current : '';
-        const products = state.products.filter(p => normalize(p.title).includes(normalize($('catalog-search').value.trim())) && normalize(p.genre).includes(normalize(genre.value)));
+        const type = $('catalog-type').value;
+        const products = state.products.filter(p => (!type || p.type === type) && normalize(p.title).includes(normalize($('catalog-search').value.trim())) && normalize(p.genre).includes(normalize(genre.value)));
         grid.replaceChildren();
         products.forEach(product => {
             const card = el('article', undefined, 'catalog-card');
             const copy = el('div', undefined, 'catalog-card-copy');
-            copy.append(el('p', product.genre, 'catalog-genre'), el('h2', product.title), el('p', product.description), el('strong', db.money(product.price), 'product-price'));
+            copy.append(el('p', `${product.type === 'pelicula' ? 'Película' : 'Serie'} · ${product.genre}`, 'catalog-genre'), el('h2', product.title), el('p', product.description), el('strong', db.money(product.price), 'product-price'));
             const actions = el('div', undefined, 'shop-actions');
             actions.append(button('Ver reseña', () => {
                 $('anime-dialog-title').textContent = product.title;
@@ -68,6 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         $('catalog-count').textContent = `${products.length} títulos encontrados`;
         $('catalog-empty').hidden = products.length > 0;
+        $('catalog-empty').textContent = type === 'pelicula' && !state.products.some(p => p.type === 'pelicula')
+            ? 'No hay películas por el momento. Estarán disponibles cuando agreguemos una al catálogo.'
+            : 'No encontramos títulos con esos filtros. Prueba otro nombre, género o tipo.';
     }
     function renderCart(state) {
         if (!$('cart-items')) return;
@@ -112,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
         $('admin-count').textContent = `${state.products.length} animes · precios en CLP`;
         state.products.forEach(product => {
             const card = el('article', undefined, 'admin-row');
-            const copy = el('div'); copy.append(el('h3', product.title), el('p', `${product.genre} · ${db.money(product.price)}`));
+            const copy = el('div'); copy.append(el('h3', product.title), el('p', `${product.type === 'pelicula' ? 'Película' : 'Serie'} · ${product.genre} · ${db.money(product.price)}`));
             const actions = el('div', undefined, 'shop-actions');
             actions.append(button('Editar', () => {
-                ['id', 'title', 'genre', 'price', 'image', 'description'].forEach(key => $(`product-${key}`).value = product[key]);
+                ['id', 'title', 'genre', 'type', 'price', 'image', 'description'].forEach(key => $(`product-${key}`).value = product[key]);
                 $('editor-title').textContent = `Editar: ${product.title}`;
                 $('product-title').focus();
                 $('product-form').scrollIntoView({ block: 'center' });
@@ -142,9 +151,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     if ($('catalog-search')) {
+        const readType = () => {
+            const type = new URLSearchParams(location.search).get('tipo');
+            $('catalog-type').value = ['serie', 'pelicula'].includes(type) ? type : '';
+        };
+        const writeType = () => {
+            const url = new URL(location.href);
+            if ($('catalog-type').value) url.searchParams.set('tipo', $('catalog-type').value);
+            else url.searchParams.delete('tipo');
+            history.replaceState(null, '', url);
+        };
+        readType();
+        $('catalog-type').addEventListener('change', () => { writeType(); render(); });
+        window.addEventListener('popstate', () => { readType(); render(); });
         $('catalog-search').addEventListener('input', render);
         $('catalog-genre').addEventListener('change', render);
-        $('catalog-reset').addEventListener('click', () => { $('catalog-search').value = ''; $('catalog-genre').value = ''; render(); $('catalog-search').focus(); });
+        $('catalog-reset').addEventListener('click', () => { $('catalog-search').value = ''; $('catalog-genre').value = ''; $('catalog-type').value = ''; writeType(); render(); $('catalog-search').focus(); });
     }
     if ($('checkout')) {
         $('cart-items').tabIndex = -1;
@@ -164,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             attempt(() => {
                 const product = {};
-                ['id', 'title', 'genre', 'price', 'image', 'description'].forEach(key => product[key] = $(`product-${key}`).value.trim());
+                ['id', 'title', 'genre', 'type', 'price', 'image', 'description'].forEach(key => product[key] = $(`product-${key}`).value.trim());
                 db.saveProduct(product); resetForm(); notice('Anime guardado. El catálogo y el carrito se actualizaron.');
             });
         });

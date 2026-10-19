@@ -65,3 +65,25 @@ test('storage failures do not report a successful purchase', () => {
     assert.equal(db.read().orders.length, 0);
     assert.equal(db.read().cart.length, 1);
 });
+test('all initial titles are series and existing saved products migrate without losing cart data', () => {
+    const { db, saved } = setup();
+    assert.ok(db.read().products.every(product => product.type === 'serie'));
+    const state = db.read();
+    state.products.forEach(product => delete product.type);
+    state.cart = [{ id: state.products[0].id, quantity: 2 }];
+    saved.set('animestorage.database.v1', JSON.stringify(state));
+    const migrated = setup(saved).db.read();
+    assert.ok(migrated.products.every(product => product.type === 'serie'));
+    assert.equal(migrated.cart[0].quantity, 2);
+    assert.equal(migrated.products.length, 10);
+});
+test('admin can add a movie and change a series to a movie persistently', () => {
+    const { db, saved } = setup();
+    const movie = db.saveProduct({ title: 'Película de prueba', genre: 'Fantasía', type: 'pelicula', description: 'Una historia.', image: 'assets/img/Sanda.jpg', price: 5990 });
+    const series = db.read().products[0];
+    db.saveProduct({ ...series, type: 'pelicula' });
+    const products = setup(saved).db.read().products;
+    assert.equal(products.filter(p => p.type === 'pelicula').length, 2);
+    assert.equal(products.find(p => p.id === movie.id).type, 'pelicula');
+    assert.throws(() => db.saveProduct({ ...movie, type: 'otro' }), /tipo/);
+});

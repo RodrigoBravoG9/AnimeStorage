@@ -18,11 +18,16 @@
         </a>
 
         <!-- Links Desktop -->
-        <div class="topbar-links"><a class="nav-link" href="carrito.html">Carrito (<span data-cart-count>0</span>)</a><a class="nav-link" href="admin.html">Admin</a>
+        <div class="topbar-links"><a class="nav-link" href="admin.html">Admin</a>
             <a href="../index.html#list" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Inicio</a>
             <a href="catalogo.html" aria-current="page" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Catálogo</a>
             <a href="../index.html#informacion" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Información</a>
 
+            <div class="topbar-actions">
+            <a class="topbar-cart" href="carrito.html" title="Ver carrito de compra">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.5 12h11L21 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+                <span class="sr-only">Carrito de compra, productos: </span><span class="cart-badge" data-cart-count>0</span>
+            </a>
             <a href="login.html" class="nav-link-cta inline-flex items-center gap-2 bg-red text-white px-5 py-2.5 text-sm font-inter font-bold tracking-wide hover:bg-red/80 transition-all border-2 border-red hover:border-paper">
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <circle cx="12" cy="7" r="4"></circle>
@@ -30,6 +35,7 @@
                 </svg>
                 Iniciar Sesión
             </a>
+            </div>
 
         </div>
     </div>
@@ -39,8 +45,9 @@
 <header class="landing-heading"><span class="eyebrow">EXPLORA ANIMESTORAGE</span><h1>Encuentra tu próxima historia</h1>
 <p>Acción, fantasía y universos por descubrir. Explora nuestra selección y conoce de qué trata cada anime.</p></header>
 <section aria-label="Buscar en el catálogo" class="catalog-toolbar">
+    <div><label for="catalog-type">Tipo</label><select id="catalog-type"><option value="">Todos los tipos</option><option value="pelicula">Películas</option><option value="serie">Series</option></select></div>
     <div><label for="catalog-search">Buscar por título</label><input id="catalog-search" type="search" placeholder="Ej. Dandadan" autocomplete="off"></div>
-    <div><label for="catalog-genre">Género</label><select id="catalog-genre"><option value="">Todos los géneros</option>Acción</option><option>Fantasía</option><option>Ciencia ficción</option><option>Aventuras</option><option>Misterio</option><option>Superhéroes</option><option>Sobrenatural</option><option>Comedia</option><option>Antología</option><option>Gastronomía</option></select></div>
+    <div><label for="catalog-genre">Género</label><select id="catalog-genre"><option value="">Todos los géneros</option></select></div>
     <button id="catalog-reset" class="landing-button secondary" type="button">Limpiar filtros</button>
 </section>
 <p id="catalog-count" class="catalog-status" role="status">10 títulos disponibles para explorar</p>
@@ -68,7 +75,7 @@
             <div>
                 <h4 class="font-inter font-bold text-sm uppercase tracking-normal text-white mb-4">Navegación</h4>
                 <ul class="space-y-2">
-                    <li><a href="../index.html#list" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Inicio</a></li>
+                    <li><a href="../index.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Inicio</a></li>
                     <li><a href="catalogo.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Catálogo</a></li>
                     <li><a href="../index.html#informacion" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Información</a></li>
                     <li><a href="login.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Iniciar Sesión</a></li>

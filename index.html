@@ -4,109 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnimeStorage</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
     <link href="assets/styles.css" rel="stylesheet">
-    <script src="/JavaScript/components/animation.js"></script>
-<script src="JavaScript/components/anime-seed.js" defer></script><script src="JavaScript/components/database.js" defer></script><script src="JavaScript/shop.js" defer></script></head>
+    <script src="JavaScript/components/animation.js" defer></script>
+    <script src="JavaScript/components/anime-seed.js" defer></script>
+    <script src="JavaScript/components/database.js" defer></script>
+    <script src="JavaScript/shop.js" defer></script>
+</head>
 
-<body class="bg-ink text-white font-inter antialiased min-h-screen " style="">
-    <style>
-        :root { --bg:#29292c; --panel:#343437; --line:#66434e; --muted:#bdb8bb; --red:#881f3f; --cream:#f1e6e9; --white:#fff; }
-        body { margin:0; background:var(--bg); color:var(--white); font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', sans-serif; font-weight:500; font-style:italic; }
-        #precios {
-            background:
-                radial-gradient(circle at 18% 8%, rgba(136, 31, 63,.14), transparent 34%),
-                linear-gradient(180deg, rgba(52, 52, 55,.94) 0%, rgba(41, 41, 44,.98) 100%),
-                var(--bg);
-            border-top:1px solid rgba(241, 230, 233,.08);
-            border-bottom:1px solid rgba(241, 230, 233,.08);
-        }
-        #precios::before {
-            content:'';
-            position:absolute;
-            inset:0;
-            pointer-events:none;
-            background:
-                linear-gradient(90deg, rgba(136, 31, 63,.12), transparent 24%, transparent 76%, rgba(136, 31, 63,.08)),
-                repeating-linear-gradient(90deg, rgba(241, 230, 233,.032) 0 1px, transparent 1px 148px),
-                repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 120px);
-            opacity:.78;
-        }
-        #precios > main { position:relative; z-index:1; }
-        .plans-section { padding:10px 8vw 30px; background:transparent; text-align:center; }
-        .eyebrow { display:inline-block; border:1px solid rgba(136, 31, 63,.35); color:rgba(136, 31, 63,.6); padding:6px 16px; letter-spacing:.08em; font-weight:400; font-style:italic; font-size:11px; margin-bottom:14px; }
-        .plans-title { margin:0 0 28px; color:var(--cream); font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif; font-size:64px; line-height:.95; letter-spacing:0; font-weight:900; font-style:italic; text-transform:uppercase; }
-        .plans-subtitle { max-width:620px; margin:20px auto 40px; color:var(--muted); font-weight:500; font-style:italic; font-size:22px; line-height:1.35; }
-        .plan-grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:stretch; gap:34px; max-width:1180px; margin:0 auto; text-align:left; }
-        .plan-card { display:flex; flex:0 1 clamp(20rem, 28vw, 24rem); flex-direction:column; width:100%; max-width:24rem; min-height:360px; padding:40px; background:rgba(52, 52, 55,.82); border:1px solid rgba(241, 230, 233,.14); color:inherit; text-decoration:none; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-        .plan-card:hover { transform:translateY(-6px); border-color:rgba(136, 31, 63,.75); box-shadow:0 22px 70px rgba(136, 31, 63,.16); }
-        .plan-card-image { width:100%; aspect-ratio:1; object-fit:cover; border-radius:8px; display:block; margin-bottom:24px; }
-        .plan-card h3 { margin:0 0 22px; font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif; font-size:34px; line-height:1.1; font-weight:900; font-style:italic; }
-        .plan-footer {
-            margin-top:auto;
-            padding-top:28px;
-            border-top:1px solid rgba(255,255,255,.16);
-        }
-        .plan-footer-cta {
-            display:block;
-            width:100%;
-            box-sizing:border-box;
-            text-align:center;
-            background:var(--red);
-            color:#fff;
-            font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
-            font-weight:700;
-            font-size:16px;
-            text-transform:uppercase;
-            letter-spacing:.02em;
-            padding:14px 20px;
-            border:2px solid var(--red);
-            transition:background .2s ease, color .2s ease;
-        }
-        .plan-card:hover .plan-footer-cta { background:transparent; color:var(--red); }
-        .empty-plans { margin:140px auto 120px; color:var(--muted); font-size:22px; }
-        .empty-plans .empty-icon { display:block; font-size:42px; color:#6f7b86; margin-bottom:18px; }
-        @media (max-width: 980px) { .plan-grid { gap:24px; } .plan-card { flex-basis:min(100%, 26rem); max-width:26rem; min-height:auto; } }
-        @media (max-width: 700px) { .plans-title { font-size:44px; } }
-    </style>
+<body class="font-inter">
 
-
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- TOPBAR -->
-<!-- ═══════════════════════════════════════════ -->
-<nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 hero-glass-nav bg-navy/95 backdrop-blur-xl shadow-2xl">
+<nav id="navbar" class="hero-glass-nav">
     <div class="topbar-inner">
-        <!-- Logo -->
-        <a href="/" class="font-bebas text-3xl tracking-normal text-red hover:text-paper transition-colors">
+
+        <a href="index.html" class="font-bebas">
             ANIMESTORAGE
         </a>
 
-        <!-- Links Desktop -->
-        <div class="topbar-links"><a class="nav-link" href="landing/carrito.html">Carrito (<span data-cart-count>0</span>)</a><a class="nav-link" href="landing/admin.html">Admin</a>
-            <a href="#list" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Inicio</a>
-            <a href="#catalogo" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Catálogo</a>
-            <a href="#informacion" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Información</a>
+        <div class="topbar-links"><a class="nav-link" href="landing/admin.html">Admin</a>
+            <a href="#list" class="nav-link text-sm font-inter">Inicio</a>
+            <a href="#catalogo" class="nav-link text-sm font-inter">Catálogo</a>
+            <a href="#informacion" class="nav-link text-sm font-inter">Información</a>
 
-            <a href="/landing/login.html" class="nav-link-cta inline-flex items-center gap-2 bg-red text-white px-5 py-2.5 text-sm font-inter font-bold tracking-wide hover:bg-red/80 transition-all border-2 border-red hover:border-paper">
-                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <div class="topbar-actions">
+            <a class="topbar-cart" href="landing/carrito.html" title="Ver carrito de compra">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.5 12h11L21 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+                <span class="sr-only">Carrito de compra, productos: </span><span class="cart-badge" data-cart-count>0</span>
+            </a>
+            <a href="landing/login.html" class="nav-link-cta text-sm font-inter font-bold">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <circle cx="12" cy="7" r="4"></circle>
                     <path d="M4 21c0-5.1 3.6-8.5 8-8.5s8 3.4 8 8.5v.5H4V21Z"></path>
                 </svg>
                 Iniciar Sesión
             </a>
+            </div>
 
         </div>
     </div>
 </nav>
 
+<main id="contenido">
 
-<!-- Reseña -->
-<section id="list" class="list-origin relative py-20 md:py-24 overflow-hidden" aria-label="Acerca de AnimeStorage">
-    <div class="relative z-10 max-w-7xl mx-auto px-6">
+<section id="list" class="list-origin" aria-label="Acerca de AnimeStorage">
+    <div>
         <div class="origin-grid">
-            <div class="origin-copy max-w-2xl">
+            <div class="origin-copy">
 
                 <ul class="origin-list">
                     <li>
@@ -124,97 +66,39 @@
                 </ul>
             </div>
 
-            <div class="origin-photo-frame w-full max-w-xl mx-auto overflow-hidden">
-                <img src="/assets/img/Card_Anime.jpeg" alt="Contenido creado con IA." class="w-full aspect-[4/3] object-cover block" loading="lazy" decoding="async">
+            <div class="origin-photo-frame">
+                <img src="assets/img/Card_Anime.jpeg" alt="Contenido creado con IA." loading="lazy" decoding="async">
             </div>
         </div>
     </div>
 </section>
 
-<!-- PLANA DE CARDS DESLIZANTES -->
-<!-- ═══════════════════════════════════════════ -->
-<section id="metodo" class="learning-showcase relative pt-16 pb-10 md:pt-20 md:pb-12 overflow-hidden">
-    <div class="relative z-10 max-w-7xl mx-auto px-6">
-        <div class="text-center mb-14 md:mb-16">
-            <h2 class="section-title font-bebas text-5xl md:text-7xl tracking-normal text-white" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">ANIMES DESTACADOS DE LA SEMANA</h2>
+<section id="metodo" class="learning-showcase">
+    <div>
+        <div class="text-center">
+            <h2 class="section-title font-bebas">ANIMES DESTACADOS DE LA SEMANA</h2>
         </div>
     </div>
 
-    <div class="learning-carousel relative z-10" aria-label="Galeria de accesos destacados">
-        <div class="learning-carousel-track" style="translate: none; rotate: none; scale: none; transform: translate3d(-1331.25px, 0px, 0px);">
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Tokyo Ghoul">
-                <img src="/assets/img/Tokyo_Ghoul.jfif" alt="Tokyo Ghoul" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Cowboy Bebop">
-                <img src="/assets/img/Cowboy_Bebop.jpg" alt="Cowboy Bebop" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Mushoku Tensei">
-                <img src="/assets/img/MushokuTensei.jfif" alt="Mushoku Tensei" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Chainsaw Man">
-                <img src="/assets/img/ChainsawMan.png" alt="Chainsaw Man" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Sanda">
-                <img src="/assets/img/Sanda.jpg" alt="Sanda" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="My Hero Academia Vigilantes">
-                <img src="/assets/img/MyHeroAcademia_Vigilantes.jpg" alt="My Hero Academia Vigilantes" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="NieR Automata Ver1.1a">
-                <img src="/assets/img/NieR_Automata.jpg" alt="NieR Automata Ver1.1a" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Dandadan">
-                <img src="/assets/img/Dandadan.jpg" alt="Dandadan" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Star Wars Visions Volumen 2">
-                <img src="/assets/img/StarWars_Visions.jpg" alt="Star Wars Visions Volumen 2" loading="lazy" decoding="async">
-            </a>
-            <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Shokugeki No Soma">
-                <img src="/assets/img/Shokugeki_No_Souma.jpg" alt="Shokugeki No Soma" loading="lazy" decoding="async">
-            </a>
-
-        <a class="learning-carousel-card is-center" href="/landing/catalogo.html" aria-label="Tokyo Ghoul" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/Tokyo_Ghoul.jfif" alt="Tokyo Ghoul" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Cowboy Bebop" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/Cowboy_Bebop.jpg" alt="Cowboy Bebop" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Mushoku Tensei" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/MushokuTensei.jfif" alt="Mushoku Tensei" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Chainsaw Man" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/Chainsaw_Man.jpg" alt="Chainsaw Man" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Sanda" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/Sanda.jpg" alt="Sanda" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="My Hero Academia Vigilantes" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/MyHeroAcademia_Vigilantes.jpg" alt="My Hero Academia Vigilantes" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="NieR Automata Ver1.1a" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/NieR_Automata.jpg" alt="NieR Automata Ver1.1a" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Dandadan" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/Dandadan.jpg" alt="Dandadan" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Star Wars Visions Volumen 2" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/StarWars_Visions.jpg" alt="Star Wars Visions Volumen 2" loading="lazy" decoding="async">
-            </a><a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Shokugeki no Soma" aria-hidden="true" tabindex="-1">
-                <img src="/assets/img/Shokugeki_No_Souma.jpg" alt="Shokugeki no Soma" loading="lazy" decoding="async">
-            </a></div>
+    <div class="learning-carousel" aria-label="Galeria de accesos destacados">
+        <div class="learning-carousel-track"></div>
 
         <p class="plans-subtitle">Esta es la selección de animes mejor valorados por la comunidad de AnimeStorage.</p>
     </div>
 
 </section>
 
+<section id="catalogo">
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- CATÁLOGO -->
-<!-- ═══════════════════════════════════════════ -->
-<section id="catalogo" class="relative pt-10 pb-16 lg:pt-12 lg:pb-20 overflow-hidden bg-navy/10" style="scroll-margin-top:64px;">
-    <main>
-        <section id="catalogo_Button" class="plans-section">
+        <section class="plans-section">
             <span class="eyebrow">CATÁLOGO</span>
             <h1 class="plans-title">Elige tu nuevo panorama para el día de hoy</h1>
 
                 <div class="plan-grid">
 
-                        <a class="plan-card" href="/landing/catalogo.html" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <a class="plan-card" href="landing/catalogo.html?tipo=pelicula">
 
-                                <img src="/assets/img/Catalogo_Luffy.jpg" alt="Ver Películas" class="plan-card-image">
+                                <img src="assets/img/Catalogo_Luffy.jpg" alt="Ver Películas" class="plan-card-image">
 
                             <h3>Entra a ver la selección de Películas</h3>
                             <div class="plan-footer">
@@ -222,18 +106,18 @@
                             </div>
                         </a>
 
-                        <a class="plan-card" href="/landing/catalogo.html" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <a class="plan-card" href="landing/catalogo.html?tipo=serie">
 
-                                <img src="/assets/img/Catalogo_Bleach.jpeg" alt="Ver Series" class="plan-card-image">
+                                <img src="assets/img/Catalogo_Bleach.jpeg" alt="Ver Series" class="plan-card-image">
 
                             <h3>Entra a ver la selección de series</h3>
                             <div class="plan-footer">
                                 <span class="plan-footer-cta">Ver series→</span>
                             </div>
                         </a>
-                        <a class="plan-card" href="/landing/catalogo.html" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <a class="plan-card" href="landing/catalogo.html">
 
-                                <img src="/assets/img/Catalogo_Animeverse.jpg" alt="Ver todo" class="plan-card-image">
+                                <img src="assets/img/Catalogo_Animeverse.jpg" alt="Ver todo" class="plan-card-image">
 
                             <h3>Entra a ver toda la selección</h3>
                             <div class="plan-footer">
@@ -243,12 +127,9 @@
                 </div>
 
         </section>
-    </main>
+
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- INFORMACIÓN -->
-<!-- ═══════════════════════════════════════════ -->
 <section id="informacion" class="information-section" aria-labelledby="information-title">
     <div class="information-inner">
         <header class="information-heading">
@@ -264,36 +145,33 @@
             </details>
             <details>
                 <summary>¿Dónde puedo explorar los animes?</summary>
-                <p>Visita nuestro <a href="/landing/catalogo.html">catálogo</a> o revisa los destacados de esta página para encontrar tu próxima historia.</p>
+                <p>Visita nuestro <a href="landing/catalogo.html">catálogo</a> o revisa los destacados de esta página para encontrar tu próxima historia.</p>
             </details>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- FOOTER -->
-<!-- ═══════════════════════════════════════════ -->
+</main>
+
 <footer class="site-footer">
-    <div class="max-w-7xl mx-auto px-6">
+    <div>
         <div class="footer-grid">
-            <!-- Brand -->
+
             <div>
-                <h3 class="font-bebas text-3xl tracking-normal text-red mb-4">ANIMESTORAGE</h3>
-                <p class="font-inter text-paper/50 text-sm leading-relaxed">Tu destino para descubrir y disfrutar de animes.</p>
+                <h3 class="font-bebas">ANIMESTORAGE</h3>
+                <p class="font-inter text-sm">Tu destino para descubrir y disfrutar de animes.</p>
             </div>
 
-            <!-- Links -->
             <div>
-                <h4 class="font-inter font-bold text-sm uppercase tracking-normal text-white mb-4">Navegación</h4>
-                <ul class="space-y-2">
-                    <li><a href="#list" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Inicio</a></li>
-                    <li><a href="#catalogo" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Catálogo</a></li>
-                    <li><a href="#informacion" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Información</a></li>
-                    <li><a href="/landing/login.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Iniciar Sesión</a></li>
+                <h4 class="font-inter font-bold text-sm">Navegación</h4>
+                <ul>
+                    <li><a href="#list" class="font-inter text-sm">Inicio</a></li>
+                    <li><a href="#catalogo" class="font-inter text-sm">Catálogo</a></li>
+                    <li><a href="#informacion" class="font-inter text-sm">Información</a></li>
+                    <li><a href="landing/login.html" class="font-inter text-sm">Iniciar Sesión</a></li>
                 </ul>
             </div>
 
-            <!-- Redes sociales -->
             <div>
                 <h4>Síguenos</h4>
                 <div class="footer-socials" aria-label="Redes sociales">
@@ -306,145 +184,14 @@
         </div>
 
         <div class="footer-bottom">
-            <p class="font-inter text-xs text-muted">ANIMESTORAGE. Todos los derechos reservados.</p>
-            <div class="flex gap-6">
-                <a href="/landing/terminos_y_condiciones.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs text-muted hover:text-red transition-colors">Términos y condiciones</a>
-                <a href="/landing/politica_privacidad.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs text-muted hover:text-red transition-colors">Política de privacidad</a>
+            <p class="font-inter text-xs">ANIMESTORAGE. Todos los derechos reservados.</p>
+            <div>
+                <a href="landing/terminos_y_condiciones.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs">Términos y condiciones</a>
+                <a href="landing/politica_privacidad.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs">Política de privacidad</a>
             </div>
         </div>
     </div>
 </footer>
-
-    <!-- Flash Messages -->
-
-<!-- Flash Messages Component -->
-<div id="flash-container" class="fixed bottom-6 right-6 z-[9999] flex flex-col gap-3 max-w-sm">
-
-</div>
-
-
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-    <!-- Custom JS -->
-    <script src="/static/js/flash.ecb250354b1a.js"></script>
-    <script src="/static/js/main.857cead16370.js"></script>
-
-
-
-
-
-
-
-<script src="/static/js/animations.ba3cf2b1e577.js?v=blue-cinema-20260517c"></script>
-<script src="/static/js/notifications.6edfa3aff709.js"></script>
-<script>
-// Información Toggle
-function toggleinformacion(btn) {
-    const content = btn.nextElementSibling;
-    const icon = btn.querySelector('i');
-    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-    // Close all others
-    document.querySelectorAll('.informacion-content').forEach(c => { c.style.maxHeight = '0px'; });
-    document.querySelectorAll('.informacion-toggle i').forEach(i => { i.style.transform = 'rotate(0deg)'; });
-
-    if (!isOpen) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.style.transform = 'rotate(45deg)';
-    }
-}
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 80) {
-        navbar.classList.add('bg-navy/95', 'backdrop-blur-xl', 'shadow-2xl');
-        navbar.classList.remove('bg-ink/0');
-    } else {
-        navbar.classList.remove('bg-navy/95', 'backdrop-blur-xl', 'shadow-2xl');
-        navbar.classList.add('bg-ink/0');
-    }
-});
-
-// Newsletter Logic
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('newsletter-modal');
-    const form = document.getElementById('newsletter-form');
-    const closeBtn = document.getElementById('close-newsletter');
-    const message = document.getElementById('newsletter-message');
-    const submitBtn = document.getElementById('newsletter-submit');
-
-    if (!modal) return;
-
-    // Mostrar despues de 5 segundos si no ha sido descartado
-    const isDismissed = localStorage.getItem('newsletter_popup_dismissed');
-
-    if (!isDismissed) {
-        setTimeout(() => {
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.classList.add('opacity-100');
-        }, 5000);
-    }
-
-    const closeModal = () => {
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        modal.classList.remove('opacity-100');
-        localStorage.setItem('newsletter_popup_dismissed', 'true');
-    };
-
-    closeBtn?.addEventListener('click', closeModal);
-
-    // Cerrar al clickear fuera
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('newsletter-email').value;
-
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'PROCESANDO...';
-
-        try {
-            const response = await fetch('/newsletter/subscribe/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email: email })
-            });
-
-            const data = await response.json();
-
-            message.classList.remove('hidden', 'text-red', 'text-green-400');
-            if (data.status === 'success' || data.status === 'info') {
-                message.innerText = data.message;
-                message.classList.add('text-green-400');
-                form.classList.add('hidden');
-
-                setTimeout(() => {
-                    closeModal();
-                }, 3000);
-            } else {
-                message.innerText = data.message;
-                message.classList.add('text-red');
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'SUSCRIBIRME';
-            }
-        } catch (error) {
-            message.innerText = 'Error al procesar la suscripcion.';
-            message.classList.add('text-red', 'block');
-            submitBtn.disabled = false;
-            submitBtn.innerText = 'SUSCRIBIRME';
-        }
-    });
-});
-</script>
-
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;b083e796383a4b0f98bd9e2fec48a520&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
 
 <p id="shop-status" class="shop-status" role="status" hidden></p><noscript><p class="landing-note">Activa JavaScript para usar el catálogo, el carrito y el panel de administración.</p></noscript></body>
 </html>

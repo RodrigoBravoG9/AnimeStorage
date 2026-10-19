@@ -18,11 +18,16 @@
         </a>
 
         <!-- Links Desktop -->
-        <div class="topbar-links"><a class="nav-link" href="carrito.html">Carrito (<span data-cart-count>0</span>)</a><a class="nav-link" href="admin.html">Admin</a>
+        <div class="topbar-links"><a class="nav-link" href="admin.html">Admin</a>
             <a href="../index.html#list" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Inicio</a>
             <a href="catalogo.html" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Catálogo</a>
             <a href="../index.html#informacion" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Información</a>
 
+            <div class="topbar-actions">
+            <a class="topbar-cart" href="carrito.html" title="Ver carrito de compra">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.5 12h11L21 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+                <span class="sr-only">Carrito de compra, productos: </span><span class="cart-badge" data-cart-count>0</span>
+            </a>
             <a href="login.html" class="nav-link-cta inline-flex items-center gap-2 bg-red text-white px-5 py-2.5 text-sm font-inter font-bold tracking-wide hover:bg-red/80 transition-all border-2 border-red hover:border-paper">
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <circle cx="12" cy="7" r="4"></circle>
@@ -30,6 +35,7 @@
                 </svg>
                 Iniciar Sesión
             </a>
+            </div>
 
         </div>
     </div>
