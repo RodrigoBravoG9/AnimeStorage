@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
     <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
     <link href="assets/styles.css" rel="stylesheet">
-    <link href="/JavaScript/components/animation.js"
+    <script src="/JavaScript/components/animation.js"></script>
 </head>
 
 <body class="bg-ink text-white font-inter antialiased min-h-screen " style="">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AnimeStorage</title>
-    <link rel="stylesheet" href="/static/css/main.129e74f58c32.css?v=inter-italic-20260518c">
     <style>
-        :root { --bg:#15161d; --panel:#1b1f2d; --line:#343a6b; --muted:#a7adbe; --red:#4b57ff; --cream:#B3D7FF; --white:#fff; }
+        :root { --bg:#29292c; --panel:#343437; --line:#66434e; --muted:#bdb8bb; --red:#881f3f; --cream:#f1e6e9; --white:#fff; }
         body { margin:0; background:var(--bg); color:var(--white); font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', sans-serif; font-weight:500; font-style:italic; }
         #precios {
             background:
-                radial-gradient(circle at 18% 8%, rgba(75,87,255,.14), transparent 34%),
-                linear-gradient(180deg, rgba(27,31,45,.94) 0%, rgba(21,22,29,.98) 100%),
+                radial-gradient(circle at 18% 8%, rgba(136, 31, 63,.14), transparent 34%),
+                linear-gradient(180deg, rgba(52, 52, 55,.94) 0%, rgba(41, 41, 44,.98) 100%),
                 var(--bg);
-            border-top:1px solid rgba(179,215,255,.08);
-            border-bottom:1px solid rgba(179,215,255,.08);
+            border-top:1px solid rgba(241, 230, 233,.08);
+            border-bottom:1px solid rgba(241, 230, 233,.08);
         }
         #precios::before {
             content:'';
@@ -32,19 +28,19 @@
             inset:0;
             pointer-events:none;
             background:
-                linear-gradient(90deg, rgba(85,97,255,.12), transparent 24%, transparent 76%, rgba(85,97,255,.08)),
-                repeating-linear-gradient(90deg, rgba(179,215,255,.032) 0 1px, transparent 1px 148px),
+                linear-gradient(90deg, rgba(136, 31, 63,.12), transparent 24%, transparent 76%, rgba(136, 31, 63,.08)),
+                repeating-linear-gradient(90deg, rgba(241, 230, 233,.032) 0 1px, transparent 1px 148px),
                 repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 120px);
             opacity:.78;
         }
         #precios > main { position:relative; z-index:1; }
         .plans-section { padding:10px 8vw 30px; background:transparent; text-align:center; }
-        .eyebrow { display:inline-block; border:1px solid rgba(75,87,255,.35); color:rgba(75,87,255,.6); padding:6px 16px; letter-spacing:.08em; font-weight:400; font-style:italic; font-size:11px; margin-bottom:14px; }
+        .eyebrow { display:inline-block; border:1px solid rgba(136, 31, 63,.35); color:rgba(136, 31, 63,.6); padding:6px 16px; letter-spacing:.08em; font-weight:400; font-style:italic; font-size:11px; margin-bottom:14px; }
         .plans-title { margin:0 0 28px; color:var(--cream); font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif; font-size:64px; line-height:.95; letter-spacing:0; font-weight:900; font-style:italic; text-transform:uppercase; }
         .plans-subtitle { max-width:620px; margin:20px auto 40px; color:var(--muted); font-weight:500; font-style:italic; font-size:22px; line-height:1.35; }
         .plan-grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:stretch; gap:34px; max-width:1180px; margin:0 auto; text-align:left; }
-        .plan-card { display:flex; flex:0 1 clamp(20rem, 28vw, 24rem); flex-direction:column; width:100%; max-width:24rem; min-height:360px; padding:40px; background:rgba(27,31,45,.82); border:1px solid rgba(179,215,255,.14); color:inherit; text-decoration:none; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-        .plan-card:hover { transform:translateY(-6px); border-color:rgba(75,87,255,.75); box-shadow:0 22px 70px rgba(75,87,255,.16); }
+        .plan-card { display:flex; flex:0 1 clamp(20rem, 28vw, 24rem); flex-direction:column; width:100%; max-width:24rem; min-height:360px; padding:40px; background:rgba(52, 52, 55,.82); border:1px solid rgba(241, 230, 233,.14); color:inherit; text-decoration:none; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+        .plan-card:hover { transform:translateY(-6px); border-color:rgba(136, 31, 63,.75); box-shadow:0 22px 70px rgba(136, 31, 63,.16); }
         .plan-card-image { width:100%; aspect-ratio:1; object-fit:cover; border-radius:8px; display:block; margin-bottom:24px; }
         .plan-card h3 { margin:0 0 22px; font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif; font-size:34px; line-height:1.1; font-weight:900; font-style:italic; }
         .plan-footer {
@@ -81,15 +77,15 @@
 <!-- TOPBAR -->
 <!-- ═══════════════════════════════════════════ -->
 <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 hero-glass-nav bg-navy/95 backdrop-blur-xl shadow-2xl">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="topbar-inner">
         <!-- Logo -->
         <a href="/" class="font-bebas text-3xl tracking-normal text-red hover:text-paper transition-colors">
             ANIMESTORAGE
         </a>
 
         <!-- Links Desktop -->
-        <div class="hidden md:flex items-center gap-8">
-            <a href="#navbar" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Inicio</a>
+        <div class="topbar-links">
+            <a href="#list" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Inicio</a>
             <a href="#catalogo" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Catálogo</a>
             <a href="#informacion" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Información</a>
             
@@ -107,9 +103,9 @@
 
 
 <!-- Reseña -->
-<section id="list" class="list-origin relative py-20 md:py-24 overflow-hidden">
+<section id="list" class="list-origin relative py-20 md:py-24 overflow-hidden" aria-label="Acerca de AnimeStorage">
     <div class="relative z-10 max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center">
+        <div class="origin-grid">
             <div class="origin-copy max-w-2xl">
 
                 <ul class="origin-list">
@@ -156,7 +152,7 @@
                 <img src="/assets/img/MushokuTensei.jfif" alt="Mushoku Tensei" loading="lazy" decoding="async">
             </a>
             <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Chainsaw Man">
-                <img src="/assets/img/Chainsaw_Man.jfif" alt="Chainsaw Man" loading="lazy" decoding="async">
+                <img src="/assets/img/ChainsawMan.png" alt="Chainsaw Man" loading="lazy" decoding="async">
             </a>
             <a class="learning-carousel-card" href="/landing/catalogo.html" aria-label="Sanda">
                 <img src="/assets/img/Sanda.jpg" alt="Sanda" loading="lazy" decoding="async">
@@ -253,19 +249,23 @@
 <!-- ═══════════════════════════════════════════ -->
 <!-- INFORMACIÓN -->
 <!-- ═══════════════════════════════════════════ -->
-<section id="informacion" class="relative py-16 lg:py-20 overflow-hidden">
-    <div class="max-w-3xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <span class="inline-block font-inter font-semibold text-xs uppercase tracking-normal text-red mb-4 border border-red/30 px-4 py-1.5">INFORMACIÓN</span>
-            <h2 class="section-title font-bebas text-5xl md:text-7xl tracking-normal text-paper" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Sobre nosotros</h2>
-        </div>
-
-        <div class="space-y-4">
-            
-            <div class="text-center py-8">
-                <p class="font-inter text-paper/60">Preguntas frecuentes.</p>
-            </div>
-            
+<section id="informacion" class="information-section" aria-labelledby="information-title">
+    <div class="information-inner">
+        <header class="information-heading">
+            <span class="eyebrow">INFORMACIÓN</span>
+            <h2 id="information-title" class="section-title">Sobre nosotros</h2>
+            <p>Tu próximo anime favorito empieza aquí. Explora nuestra selección de series y películas y descubre nuevas historias.</p>
+        </header>
+        <div class="information-faq">
+            <h3>Preguntas frecuentes</h3>
+            <details>
+                <summary>¿Qué puedo encontrar en AnimeStorage?</summary>
+                <p>Una selección de series y películas de anime, además de los destacados de la semana para descubrir qué ver.</p>
+            </details>
+            <details>
+                <summary>¿Dónde puedo explorar los animes?</summary>
+                <p>Visita nuestro <a href="/landing/catalogo.html">catálogo</a> o revisa los destacados de esta página para encontrar tu próxima historia.</p>
+            </details>
         </div>
     </div>
 </section>
@@ -273,9 +273,9 @@
 <!-- ═══════════════════════════════════════════ -->
 <!-- FOOTER -->
 <!-- ═══════════════════════════════════════════ -->
-<footer class="relative py-16 border-t border-white/10 bg-ink">
+<footer class="site-footer">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-3 gap-12">
+        <div class="footer-grid">
             <!-- Brand -->
             <div>
                 <h3 class="font-bebas text-3xl tracking-normal text-red mb-4">ANIMESTORAGE</h3>
@@ -286,7 +286,7 @@
             <div>
                 <h4 class="font-inter font-bold text-sm uppercase tracking-normal text-white mb-4">Navegación</h4>
                 <ul class="space-y-2">
-                    <li><a href="#navbar" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Inicio</a></li>
+                    <li><a href="#list" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Inicio</a></li>
                     <li><a href="#catalogo" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Catálogo</a></li>
                     <li><a href="#informacion" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Información</a></li>
                     <li><a href="/landing/login.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Iniciar Sesión</a></li>
@@ -295,28 +295,17 @@
 
             <!-- Redes sociales -->
             <div>
-                <h4 class="font-inter font-bold text-sm uppercase tracking-normal text-white mb-4">Síguenos</h4>
-                <div class="flex gap-3">
-                    <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-red hover:border-red transition-all">
-                        <i class="bi bi-twitter-x text-white text-sm"></i>
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-red hover:border-red transition-all">
-                        <i class="bi bi-instagram text-white text-sm"></i>
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-red hover:border-red transition-all">
-                        <i class="bi bi-instagram text-white text-sm"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-red hover:border-red transition-all">
-                        <i class="bi bi-tiktok text-white text-sm"></i>
-                    </a>
-                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-red hover:border-red transition-all">
-                        <i class="bi bi-youtube text-white text-sm"></i>
-                    </a>
+                <h4>Síguenos</h4>
+                <div class="footer-socials" aria-label="Redes sociales">
+                    <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (abre en otra pestaña)">X</a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a>
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a>
                 </div>
             </div>
         </div>
 
-        <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="footer-bottom">
             <p class="font-inter text-xs text-muted">ANIMESTORAGE. Todos los derechos reservados.</p>
             <div class="flex gap-6">
                 <a href="/landing/terminos_y_condiciones.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs text-muted hover:text-red transition-colors">Términos y condiciones</a>

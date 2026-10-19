@@ -1,11 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeStorage - Catálogo</title>
+    <meta name="description" content="Descubre series, aventuras y nuevas historias en el catálogo de AnimeStorage.">
+    <title>Catálogo | AnimeStorage</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <script src="../JavaScript/landing.js" defer></script>
 </head>
-<body>
-    
+<body class="landing-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+<nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 hero-glass-nav bg-navy/95 backdrop-blur-xl shadow-2xl">
+    <div class="topbar-inner">
+        <!-- Logo -->
+        <a href="../index.html" class="font-bebas text-3xl tracking-normal text-red hover:text-paper transition-colors">
+            ANIMESTORAGE
+        </a>
+
+        <!-- Links Desktop -->
+        <div class="topbar-links">
+            <a href="../index.html#list" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Inicio</a>
+            <a href="catalogo.html" aria-current="page" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Catálogo</a>
+            <a href="../index.html#informacion" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Información</a>
+
+            <a href="login.html" class="nav-link-cta inline-flex items-center gap-2 bg-red text-white px-5 py-2.5 text-sm font-inter font-bold tracking-wide hover:bg-red/80 transition-all border-2 border-red hover:border-paper">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <circle cx="12" cy="7" r="4"></circle>
+                    <path d="M4 21c0-5.1 3.6-8.5 8-8.5s8 3.4 8 8.5v.5H4V21Z"></path>
+                </svg>
+                Iniciar Sesión
+            </a>
+
+        </div>
+    </div>
+</nav>
+<main id="contenido" class="landing-main" tabindex="-1">
+
+<header class="landing-heading"><span class="eyebrow">EXPLORA ANIMESTORAGE</span><h1>Encuentra tu próxima historia</h1>
+<p>Acción, fantasía y universos por descubrir. Explora nuestra selección y conoce de qué trata cada anime.</p></header>
+<section aria-label="Buscar en el catálogo" class="catalog-toolbar">
+    <div><label for="catalog-search">Buscar por título</label><input id="catalog-search" type="search" placeholder="Ej. Dandadan" autocomplete="off"></div>
+    <div><label for="catalog-genre">Género</label><select id="catalog-genre"><option value="">Todos los géneros</option>Acción</option><option>Fantasía</option><option>Ciencia ficción</option><option>Aventuras</option><option>Misterio</option><option>Superhéroes</option><option>Sobrenatural</option><option>Comedia</option><option>Antología</option><option>Gastronomía</option></select></div>
+    <button id="catalog-reset" class="landing-button secondary" type="button">Limpiar filtros</button>
+</section>
+<p id="catalog-count" class="catalog-status" role="status">10 títulos disponibles para explorar</p>
+<section class="catalog-grid" aria-label="Selección de anime"><article class="catalog-card" data-title="Tokyo Ghoul" data-genre="Acción · Fantasía oscura">
+    <img src="../assets/img/Tokyo_Ghoul.jfif" alt="Portada de Tokyo Ghoul" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Acción · Fantasía oscura</p><h2>Tokyo Ghoul</h2><p>Ken Kaneki queda atrapado entre humanos y ghouls mientras intenta conservar su identidad.</p>
+    <button class="landing-button secondary" type="button" data-detail="0" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de Tokyo Ghoul</span></button></div>
+</article>
+<article class="catalog-card" data-title="Cowboy Bebop" data-genre="Ciencia ficción · Aventuras">
+    <img src="../assets/img/Cowboy_Bebop.jpg" alt="Portada de Cowboy Bebop" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Ciencia ficción · Aventuras</p><h2>Cowboy Bebop</h2><p>Spike y la tripulación de la Bebop recorren el espacio como cazarrecompensas, con el pasado siempre cerca.</p>
+    <button class="landing-button secondary" type="button" data-detail="1" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de Cowboy Bebop</span></button></div>
+</article>
+<article class="catalog-card" data-title="Mushoku Tensei" data-genre="Fantasía · Aventuras">
+    <img src="../assets/img/MushokuTensei.jfif" alt="Portada de Mushoku Tensei" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Fantasía · Aventuras</p><h2>Mushoku Tensei</h2><p>Una segunda vida en un mundo de magia abre un viaje de aprendizaje para Rudeus Greyrat.</p>
+    <button class="landing-button secondary" type="button" data-detail="2" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de Mushoku Tensei</span></button></div>
+</article>
+<article class="catalog-card" data-title="Chainsaw Man" data-genre="Acción · Fantasía oscura">
+    <img src="../assets/img/ChainsawMan.png" alt="Portada de Chainsaw Man" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Acción · Fantasía oscura</p><h2>Chainsaw Man</h2><p>Denji y Pochita se enfrentan a un mundo de demonios, deseos y decisiones inesperadas.</p>
+    <button class="landing-button secondary" type="button" data-detail="3" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de Chainsaw Man</span></button></div>
+</article>
+<article class="catalog-card" data-title="Sanda" data-genre="Misterio · Fantasía">
+    <img src="../assets/img/Sanda.jpg" alt="Portada de Sanda" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Misterio · Fantasía</p><h2>Sanda</h2><p>En una sociedad con pocos niños, Sanda se ve envuelto en un misterio ligado a la leyenda de Santa Claus.</p>
+    <button class="landing-button secondary" type="button" data-detail="4" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de Sanda</span></button></div>
+</article>
+<article class="catalog-card" data-title="My Hero Academia: Vigilantes" data-genre="Acción · Superhéroes">
+    <img src="../assets/img/MyHeroAcademia_Vigilantes.jpg" alt="Portada de My Hero Academia: Vigilantes" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Acción · Superhéroes</p><h2>My Hero Academia: Vigilantes</h2><p>Koichi Haimawari descubre otra forma de ayudar a los demás al margen de los héroes profesionales.</p>
+    <button class="landing-button secondary" type="button" data-detail="5" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de My Hero Academia: Vigilantes</span></button></div>
+</article>
+<article class="catalog-card" data-title="NieR:Automata Ver1.1a" data-genre="Ciencia ficción · Acción">
+    <img src="../assets/img/NieR_Automata.jpg" alt="Portada de NieR:Automata Ver1.1a" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Ciencia ficción · Acción</p><h2>NieR:Automata Ver1.1a</h2><p>Los androides 2B y 9S luchan contra formas de vida mecánicas en una Tierra abandonada por la humanidad.</p>
+    <button class="landing-button secondary" type="button" data-detail="6" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de NieR:Automata Ver1.1a</span></button></div>
+</article>
+<article class="catalog-card" data-title="Dandadan" data-genre="Sobrenatural · Comedia">
+    <img src="../assets/img/Dandadan.jpg" alt="Portada de Dandadan" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Sobrenatural · Comedia</p><h2>Dandadan</h2><p>Momo y Okarun descubren que los fantasmas y los extraterrestres pueden ser igual de reales y peligrosos.</p>
+    <button class="landing-button secondary" type="button" data-detail="7" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de Dandadan</span></button></div>
+</article>
+<article class="catalog-card" data-title="Star Wars: Visions — Volumen 2" data-genre="Ciencia ficción · Antología">
+    <img src="../assets/img/StarWars_Visions.jpg" alt="Portada de Star Wars: Visions — Volumen 2" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Ciencia ficción · Antología</p><h2>Star Wars: Visions — Volumen 2</h2><p>Cortometrajes animados exploran nuevas miradas y estilos dentro de la galaxia de Star Wars.</p>
+    <button class="landing-button secondary" type="button" data-detail="8" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de Star Wars: Visions — Volumen 2</span></button></div>
+</article>
+<article class="catalog-card" data-title="Food Wars! Shokugeki no Soma" data-genre="Comedia · Gastronomía">
+    <img src="../assets/img/Shokugeki_No_Souma.jpg" alt="Portada de Food Wars! Shokugeki no Soma" loading="lazy" width="480" height="640">
+    <div class="catalog-card-copy"><p class="catalog-genre">Comedia · Gastronomía</p><h2>Food Wars! Shokugeki no Soma</h2><p>Soma Yukihira pone a prueba su cocina en una academia donde cada duelo exige creatividad y técnica.</p>
+    <button class="landing-button secondary" type="button" data-detail="9" aria-haspopup="dialog">Ver reseña<span class="sr-only"> de Food Wars! Shokugeki no Soma</span></button></div>
+</article>
+</section>
+<p id="catalog-empty" class="empty-state" hidden>No encontramos títulos con esos filtros. Prueba otro nombre o género.</p>
+<aside class="landing-note">Este catálogo es una presentación del proyecto. Las compras y la reproducción de contenido todavía no están habilitadas.</aside>
+<dialog id="anime-dialog" class="anime-dialog" aria-labelledby="anime-dialog-title">
+    <div class="dialog-content"><h2 id="anime-dialog-title"></h2><p id="anime-dialog-genre" class="catalog-genre"></p><p id="anime-dialog-description"></p>
+    <p class="landing-note">Ficha informativa. Reproducción y compra no disponibles en esta versión.</p>
+    <form method="dialog"><button class="landing-button" autofocus>Cerrar reseña</button></form></div>
+</dialog>
+<noscript><p class="landing-note">Activa JavaScript para buscar, filtrar o abrir las reseñas. Puedes leer todos los títulos y sus descripciones en esta página.</p></noscript>
+
+</main>
+<footer class="site-footer">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="footer-grid">
+            <!-- Brand -->
+            <div>
+                <h3 class="font-bebas text-3xl tracking-normal text-red mb-4">ANIMESTORAGE</h3>
+                <p class="font-inter text-paper/50 text-sm leading-relaxed">Tu destino para descubrir y disfrutar de animes.</p>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <h4 class="font-inter font-bold text-sm uppercase tracking-normal text-white mb-4">Navegación</h4>
+                <ul class="space-y-2">
+                    <li><a href="../index.html#list" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Inicio</a></li>
+                    <li><a href="catalogo.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Catálogo</a></li>
+                    <li><a href="../index.html#informacion" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Información</a></li>
+                    <li><a href="login.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Iniciar Sesión</a></li>
+                </ul>
+            </div>
+
+            <!-- Redes sociales -->
+            <div>
+                <h4>Síguenos</h4>
+                <div class="footer-socials" aria-label="Redes sociales">
+                    <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (abre en otra pestaña)">X</a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a>
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="font-inter text-xs text-muted">ANIMESTORAGE. Todos los derechos reservados.</p>
+            <div class="flex gap-6">
+                <a href="terminos_y_condiciones.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs text-muted hover:text-red transition-colors">Términos y condiciones</a>
+                <a href="politica_privacidad.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs text-muted hover:text-red transition-colors">Política de privacidad</a>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

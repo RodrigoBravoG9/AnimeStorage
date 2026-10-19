@@ -1,11 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeStorage - Iniciar Sesión</title>
+    <meta name="description" content="Accede a AnimeStorage. Conoce el estado del acceso de usuarios de este proyecto.">
+    <title>Iniciar sesión | AnimeStorage</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <script src="../JavaScript/landing.js" defer></script>
 </head>
-<body>
-    
+<body class="landing-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+<nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 hero-glass-nav bg-navy/95 backdrop-blur-xl shadow-2xl">
+    <div class="topbar-inner">
+        <!-- Logo -->
+        <a href="../index.html" class="font-bebas text-3xl tracking-normal text-red hover:text-paper transition-colors">
+            ANIMESTORAGE
+        </a>
+
+        <!-- Links Desktop -->
+        <div class="topbar-links">
+            <a href="../index.html#list" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Inicio</a>
+            <a href="catalogo.html" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Catálogo</a>
+            <a href="../index.html#informacion" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Información</a>
+
+            <a href="login.html" aria-current="page" class="nav-link-cta inline-flex items-center gap-2 bg-red text-white px-5 py-2.5 text-sm font-inter font-bold tracking-wide hover:bg-red/80 transition-all border-2 border-red hover:border-paper">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <circle cx="12" cy="7" r="4"></circle>
+                    <path d="M4 21c0-5.1 3.6-8.5 8-8.5s8 3.4 8 8.5v.5H4V21Z"></path>
+                </svg>
+                Iniciar Sesión
+            </a>
+
+        </div>
+    </div>
+</nav>
+<main id="contenido" class="landing-main" tabindex="-1">
+
+<div class="login-layout">
+    <header class="landing-heading"><span class="eyebrow">BIENVENIDO A ANIMESTORAGE</span><h1>Tus historias, en un solo lugar</h1>
+    <p>Descubre nuevos animes, explora los destacados de la semana y encuentra tu próxima serie favorita.</p>
+    <a class="landing-text-link" href="catalogo.html">Explorar el catálogo →</a></header>
+    <section class="login-card" aria-labelledby="login-title">
+        <h2 id="login-title">Iniciar sesión</h2><p>El acceso de usuarios está en preparación.</p>
+        <div class="landing-note" id="login-notice">Formulario de demostración: todavía no se conecta a un servidor. No ingreses una contraseña real; los datos no se envían ni se guardan.</div>
+        <form id="login-form" aria-describedby="login-notice">
+            <label for="login-email">Correo electrónico</label><input id="login-email" name="email" type="email" autocomplete="off" placeholder="nombre@ejemplo.com" required maxlength="254">
+            <label for="login-password">Contraseña de prueba</label>
+            <div class="password-field"><input id="login-password" name="password" type="password" autocomplete="off" placeholder="Solo para la demostración" required minlength="8"><button id="password-toggle" type="button" aria-controls="login-password" aria-pressed="false">Mostrar</button></div>
+            <p class="field-help">Usa al menos 8 caracteres para probar la validación.</p>
+            <button class="landing-button" type="submit" disabled>Probar formulario</button>
+            <p id="login-status" role="status" class="form-status"></p>
+        </form>
+        <noscript><p class="landing-note">La demostración del formulario requiere JavaScript.</p></noscript>
+        <p class="login-legal">Consulta los <a href="terminos_y_condiciones.html">términos y condiciones</a> y la <a href="politica_privacidad.html">política de privacidad</a>. El registro y la recuperación de contraseñas aún no están disponibles.</p>
+    </section>
+</div>
+
+</main>
+<footer class="site-footer">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="footer-grid">
+            <!-- Brand -->
+            <div>
+                <h3 class="font-bebas text-3xl tracking-normal text-red mb-4">ANIMESTORAGE</h3>
+                <p class="font-inter text-paper/50 text-sm leading-relaxed">Tu destino para descubrir y disfrutar de animes.</p>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <h4 class="font-inter font-bold text-sm uppercase tracking-normal text-white mb-4">Navegación</h4>
+                <ul class="space-y-2">
+                    <li><a href="../index.html#list" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Inicio</a></li>
+                    <li><a href="catalogo.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Catálogo</a></li>
+                    <li><a href="../index.html#informacion" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Información</a></li>
+                    <li><a href="login.html" class="font-inter text-sm text-paper/50 hover:text-red transition-colors">Iniciar Sesión</a></li>
+                </ul>
+            </div>
+
+            <!-- Redes sociales -->
+            <div>
+                <h4>Síguenos</h4>
+                <div class="footer-socials" aria-label="Redes sociales">
+                    <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (abre en otra pestaña)">X</a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a>
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="font-inter text-xs text-muted">ANIMESTORAGE. Todos los derechos reservados.</p>
+            <div class="flex gap-6">
+                <a href="terminos_y_condiciones.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs text-muted hover:text-red transition-colors">Términos y condiciones</a>
+                <a href="politica_privacidad.html" target="_blank" rel="noopener noreferrer" class="font-inter text-xs text-muted hover:text-red transition-colors">Política de privacidad</a>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
