@@ -7,7 +7,7 @@
     <title>Iniciar sesión | AnimeStorage</title>
     <link rel="stylesheet" href="../assets/styles.css">
     <script src="../JavaScript/landing.js" defer></script>
-</head>
+<script src="../JavaScript/components/anime-seed.js" defer></script><script src="../JavaScript/components/database.js" defer></script><script src="../JavaScript/shop.js" defer></script></head>
 <body class="landing-page">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 hero-glass-nav bg-navy/95 backdrop-blur-xl shadow-2xl">
@@ -18,7 +18,7 @@
         </a>
 
         <!-- Links Desktop -->
-        <div class="topbar-links">
+        <div class="topbar-links"><a class="nav-link" href="carrito.html">Carrito (<span data-cart-count>0</span>)</a><a class="nav-link" href="admin.html">Admin</a>
             <a href="../index.html#list" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Inicio</a>
             <a href="catalogo.html" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Catálogo</a>
             <a href="../index.html#informacion" class="nav-link text-sm font-inter font-normal tracking-wide text-white/80 hover:text-red transition-colors">Información</a>
@@ -98,5 +98,5 @@
         </div>
     </div>
 </footer>
-</body>
+<p id="shop-status" class="shop-status" role="status" hidden></p><noscript><p class="landing-note">Activa JavaScript para usar el catálogo, el carrito y el panel de administración.</p></noscript></body>
 </html>

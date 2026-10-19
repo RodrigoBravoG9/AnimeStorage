@@ -142,6 +142,58 @@
     .login-card, .dialog-content { padding: 24px; }
 }
 
+/* Store, cart and local administration */
+.topbar-inner { flex-wrap: wrap; }
+.topbar-links { flex-wrap: wrap; justify-content: flex-end; gap: 14px 20px; }
+.shop-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: 32px; align-items: start; }
+.admin-layout { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(0, 1.5fr); gap: 32px; align-items: start; }
+.shop-panel { padding: 28px; background: var(--color-navy); border: 1px solid var(--color-line); border-radius: 12px; min-width: 0; }
+.shop-panel h2 { font-size: 26px; color: var(--color-paper); margin-bottom: 24px; }
+.shop-panel p { line-height: 1.7; color: var(--color-muted); }
+.shop-panel > .landing-button { display: flex; width: 100%; margin-top: 16px; }
+.shop-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.catalog-card .shop-actions { margin-top: auto; padding-top: 20px; }
+.catalog-card .shop-actions .landing-button { flex: 1 1 130px; margin: 0; }
+.product-price { display: block; color: #f1b9cb; font-size: 24px; margin-bottom: 8px; }
+.cart-row, .admin-row { display: flex; gap: 20px; align-items: center; background: var(--color-navy); border: 1px solid var(--color-line); border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+.cart-row img, .admin-row img { width: 72px; height: 96px; object-fit: cover; border-radius: 6px; flex: none; }
+.cart-row > div, .admin-row > div:not(.shop-actions) { flex: 1; min-width: 0; }
+.cart-row h2, .admin-row h3 { font-size: 19px; line-height: 1.4; overflow-wrap: anywhere; }
+.cart-row p, .admin-row p { color: var(--color-muted); font-size: 14px; line-height: 1.6; margin-top: 8px; }
+.cart-row > strong { white-space: nowrap; }
+.quantity-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+.quantity-controls .landing-button { padding: 8px 12px; min-width: 44px; }
+.cart-total { font-size: 36px; color: var(--color-paper) !important; font-weight: 900; }
+#product-form > input, #product-form textarea { margin-bottom: 20px; }
+.landing-page textarea { width: 100%; resize: vertical; min-height: 120px; padding: 12px; color: white; border: 1px solid #81757a; border-radius: 6px; background: #232325; font-size: 16px; }
+.landing-page textarea:focus-visible { outline: 2px solid #f1b9cb; outline-offset: 3px; }
+.admin-row { flex-wrap: wrap; }
+.admin-row .shop-actions { width: 100%; margin-top: 0; }
+.shop-status { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 150; width: min(620px, calc(100% - 32px)); padding: 16px 20px; color: #fff; background: #681c34; border: 1px solid #e2a0b4; border-radius: 8px; box-shadow: 0 8px 30px #0006; line-height: 1.5; }
+.shop-status[hidden] { display: none; }
+.order-history { margin-top: 48px; }
+.learning-carousel:has(.store-featured) { overflow-x: auto; padding: 24px; }
+.learning-carousel-track:has(.store-featured) { transform: none !important; width: max-content; }
+.store-featured { position: relative; flex-shrink: 0; }
+.store-featured span { display: block; position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 12px 12px; background: linear-gradient(transparent, #000e); color: white; font-size: 14px; line-height: 1.5; }
+.order-history > h2 { margin-bottom: 24px; }
+.order-card { padding: 24px; margin-bottom: 16px; border: 1px solid var(--color-line); border-radius: 10px; background: var(--color-navy); }
+.order-card p { color: var(--color-muted); line-height: 1.8; margin: 8px 0; }
+#order-result { margin-top: 32px; }
+@media (max-width: 1000px) {
+    .topbar-inner { justify-content: center; }
+    .topbar-links { justify-content: center; }
+}
+@media (max-width: 800px) {
+    .shop-layout, .admin-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+    .cart-row { flex-wrap: wrap; gap: 16px; padding: 16px; }
+    .cart-row > strong { width: 100%; text-align: right; }
+    .shop-panel { padding: 20px; }
+    .topbar-links { gap: 10px 16px; }
+}
+
 option {
   color: black;
 }
